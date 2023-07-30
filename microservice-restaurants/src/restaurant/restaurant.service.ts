@@ -16,8 +16,7 @@ export class RestaurantService {
   ) {}
 
   async create(restaurantDto: RestaurantDto): Promise<IRestaurant> {
-    const newRestaurant = new this.modelRestaurant(restaurantDto);
-    return await newRestaurant.save();
+    return this.modelRestaurant.create(restaurantDto);
   }
 
   async findAll(): Promise<IRestaurant[]> {
@@ -35,11 +34,7 @@ export class RestaurantService {
   }
 
   async delete(id: string) {
-    await this.modelRestaurant.findByIdAndDelete(id);
-    return {
-      status: HttpStatus.OK,
-      msg: 'Deleted',
-    };
+    return this.modelRestaurant.findByIdAndDelete(id);
   }
 
   async addRestaurantOrderToUser(
@@ -55,12 +50,11 @@ export class RestaurantService {
       { new: true },
     );
 
-    const newOrder = new this.modelOrder({
+    const userOrder = await this.modelOrder.create({
       client: userId,
       restaurant: restaurantId,
       description,
     });
-    const userOrder = await this.modelOrder.create(newOrder);
     return userOrder.populate(['client', 'restaurant']);
   }
 

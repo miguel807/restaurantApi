@@ -2,23 +2,22 @@ import { MessagePattern, Payload } from '@nestjs/microservices';
 import { RestaurantDto } from './dto/restaurant.dto';
 import { RestaurantService } from './restaurant.service';
 import { Controller, HttpStatus } from '@nestjs/common';
-import { RestaurantMSG } from 'src/common/constants';
+import { RestaurantMSG } from '../common/constants';
 import { IRestaurant } from '../common/interfaces/restaurant.interface';
-import { use } from 'passport';
 
 @Controller()
 export class RestaurantController {
   constructor(private readonly restaurantService: RestaurantService) {}
 
   @MessagePattern(RestaurantMSG.CREATE)
-  async create(@Payload() restaurantDto: RestaurantDto) {
+  async create(@Payload() restaurantDto: RestaurantDto): Promise<IRestaurant> {
     const exist = await this.findOneByName(restaurantDto.name);
     if (exist) return exist;
     return this.restaurantService.create(restaurantDto);
   }
 
   @MessagePattern(RestaurantMSG.FIND_ALL)
-  findAll() {
+  findAll(): Promise<IRestaurant[]> {
     return this.restaurantService.findAll();
   }
 
@@ -35,7 +34,7 @@ export class RestaurantController {
   }
 
   @MessagePattern(RestaurantMSG.UPDATE)
-  async update(@Payload() payload) {
+  async update(@Payload() payload): Promise<IRestaurant> {
     await this.restaurantService.findOne(payload.id);
     return this.restaurantService.update(
       payload.id,
@@ -45,7 +44,13 @@ export class RestaurantController {
 
   @MessagePattern(RestaurantMSG.DELETE)
   async delete(@Payload() id: string) {
-    await this.restaurantService.findOne(id);
+    const restaurant = await this.restaurantService.findOne(id);
+    if (!restaurant) {
+      return {
+        status: HttpStatus.BAD_REQUEST,
+        error: [`The restaurant is not found`],
+      };
+    }
     return this.restaurantService.delete(id);
   }
 
