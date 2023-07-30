@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import {ALLExceptionFilter} from "./common/filters/http-exception.filter";
 
 async function bootstrap() {
   const configApp = await NestFactory.create(AppModule);
@@ -17,6 +18,7 @@ async function bootstrap() {
       },
     },
   );
+    app.useGlobalFilters(new ALLExceptionFilter());
 
   await app.listen();
 }

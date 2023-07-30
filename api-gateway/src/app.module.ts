@@ -9,7 +9,6 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 import { ErrorsInterceptor } from './common/interceptors/errors.interceptor';
 import { TimeoutInterceptor } from './common/interceptors/timeout.interceptor';
 import { CommonModule } from './common/common.module';
-import { RedisCacheModule } from './redis/redis.module';
 
 @Module({
   imports: [

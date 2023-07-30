@@ -17,7 +17,6 @@ import { firstValueFrom, Observable } from 'rxjs';
 import { UserDto } from './dto/create-user.dto';
 import { ClientProxyRestaurant } from '../common/proxy/client-proxy';
 import { IUser } from './interfaces/user.interface';
-import { GetUser } from '../auth/decorators';
 import { AuthGuard } from '@nestjs/passport';
 import { CacheInterceptor } from '@nestjs/cache-manager';
 
@@ -36,7 +35,7 @@ export class UserController {
 
   @Get()
   @UseInterceptors(CacheInterceptor)
-  findAll(@GetUser() user: IUser): Observable<IUser[]> {
+  findAll(): Observable<IUser[]> {
     return this.clientProxyUser.send(UserMSG.FIND_ALL, '');
   }
 
@@ -49,7 +48,6 @@ export class UserController {
   async update(@Param('id') id: string, @Body() userDTO: UserDto) {
     try {
       const user = await firstValueFrom(this.findOne(id));
-      console.log(user);
       if (!user)
         throw new HttpException('User Not Found', HttpStatus.NOT_FOUND);
       return this.clientProxyUser.send(UserMSG.UPDATE, { id, userDTO });

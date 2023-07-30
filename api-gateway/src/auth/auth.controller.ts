@@ -2,15 +2,11 @@ import {
   Controller,
   Post,
   Body,
-  Req,
-  UseGuards,
-  UseInterceptors,
 } from '@nestjs/common';
 
 import { AuthService } from './auth.service';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import { UserDto } from '../user/dto/create-user.dto';
-import { ErrorsInterceptor } from '../common/interceptors/errors.interceptor';
 
 @Controller('auth')
 export class AuthController {

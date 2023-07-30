@@ -2,8 +2,9 @@ import { UserService } from './user.service';
 import { UserDTO } from './dto/user.dto';
 import { Controller, HttpStatus } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
-import { UserMsg } from 'src/common/constants';
+import { UserMsg } from '../common/constants';
 import { ParseMongoIdPipe } from '../common/pipes/parse-mongo-id.pipe';
+import { IUser } from './interfaces/user.interface';
 
 @Controller()
 export class UserController {
@@ -33,8 +34,12 @@ export class UserController {
   }
 
   @MessagePattern(UserMsg.UPDATE)
-  update(@Payload() payload: any) {
-    return this.userService.update(payload.id, payload.userDTO);
+  update(@Payload() payload: any): Promise<IUser> {
+    try {
+      return this.userService.update(payload.id, payload.userDTO);
+    } catch (error) {
+      return error;
+    }
   }
 
   @MessagePattern(UserMsg.DELETE)
