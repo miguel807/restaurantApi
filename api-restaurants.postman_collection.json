@@ -1,0 +1,492 @@
+{
+	"info": {
+		"_postman_id": "aa958e3e-9d02-4e8f-b219-f2fc1cdc2050",
+		"name": "api-restaurants",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18956125"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ajpirez\",\r\n    \"email\": \"ajpirez1994@gmail.com\",\r\n    \"phone\": \"535-401-56-78\",\r\n    \"age\": 25,\r\n    \"password\":\"123Ale\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/{{version}}/user",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ajpirez\",\r\n    \"email\": \"ajpirez1994@gmail.com\",\r\n    \"phone\": \"535-401-56-78\",\r\n    \"age\": 25,\r\n    \"password\":\"123Ale\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/{{version}}/user/60ecd60cde6343284858b403",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"user",
+								"60ecd60cde6343284858b403"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/api/{{version}}/user",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find One",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/api/{{version}}/user/60ecd60cde6343284858b403",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"user",
+								"60ecd60cde6343284858b403"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/api/{{version}}/user/60ecd5e2de6343d42258b3ff",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"user",
+								"60ecd5e2de6343d42258b3ff"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "restaurants",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Restaurante 2\",\r\n    \"address\": \"Airbus A344\",\r\n    \"capacity\": 30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/{{version}}/restaurant",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"restaurant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/api/{{version}}/restaurant",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"restaurant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find One",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/api/{{version}}/restaurant/60ecd681dedb84783361a88c",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"restaurant",
+								"60ecd681dedb84783361a88c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/api/{{version}}/restaurant/60ec7ec76d1e8029584697ea",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"restaurant",
+								"60ec7ec76d1e8029584697ea"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Restaurante 1 Updated\",\r\n    \"address\": \"Airbus A344 updated\",\r\n    \"capacity\": 40\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/{{version}}/restaurant/64c434c1cb8110d8da416082",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"restaurant",
+								"64c434c1cb8110d8da416082"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Order to User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Pizza\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/{{version}}/restaurant/64c4b3bd4509ec5158caad80/addOrderToUser",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"restaurant",
+								"64c4b3bd4509ec5158caad80",
+								"addOrderToUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signin",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ajpirez1994@gmail.comm\",\r\n    \"password\": \"123Ale\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/{{version}}/auth/signin",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"name\": \"ajpirezz\",\r\n    \"email\": \"maye1999@gmail.com\",\r\n    \"phone\": \"535-401-56-45\",\r\n    \"age\": 25,\r\n    \"password\":\"123Ale\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/api/{{version}}/auth/signup",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"api",
+								"{{version}}",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "endpoint",
+			"value": "http://127.0.0.1:3000"
+		},
+		{
+			"key": "version",
+			"value": "v2"
+		},
+		{
+			"key": "token",
+			"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFqcGlyZXoxOTk0QGdtYWlsLmNvbSIsInN1YiI6IjY0YzNmYTE1MGY3YTY0NDcxNTZmZTVjNiIsImlhdCI6MTY5MDU3MDAyNywiZXhwIjoxNjkwNjEzMjI3fQ.dVd_05B6W81wyzH15PFQyjJx-bKg9QuFDDV1IAAeukU"
+		}
+	]
+}
