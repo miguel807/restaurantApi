@@ -71,7 +71,8 @@ $ npm run start:prod
 # * Docker se desplegara en el puerto 80
 # * la version de la API es v2 ej: http://localhost/v2/auth/signup
 docker-compose -f docker-compose.dev.yml up --build -d
-
-# deploy from Docker hub
-docker-compose -f docker-compose.prod.yml up --build -d
 ```
+
+### Adicional
+
+Se creó una tarea que se ejecuta todos los dias a las 9 am para que los usuario del día anterior  se limpien del restaurante y se comiencen un nuevo dia de atención al cliente.
