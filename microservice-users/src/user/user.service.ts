@@ -26,8 +26,7 @@ export class UserService {
   async create(userDto: UserDTO): Promise<IUser> {
     try {
       const hash = await this.hashPassword(userDto.password);
-      const newUser = new this.model({ ...userDto, password: hash });
-      return await newUser.save();
+      return this.model.create({ ...userDto, password: hash });
     } catch (err) {
       console.log(err);
     }
@@ -37,14 +36,14 @@ export class UserService {
     return this.model.find();
   }
 
-  findOne(id: string): Promise<IUser> {
+  async findOne(id: string): Promise<IUser> {
     return this.model.findById(id);
   }
 
   async update(id: string, updateUserDto: UserDTO): Promise<IUser> {
     const hash = await this.hashPassword(updateUserDto.password);
     const user = { ...updateUserDto, password: hash };
-    return await this.model.findByIdAndUpdate(id, user, { new: true });
+    return this.model.findByIdAndUpdate(id, user, { new: true });
   }
 
   remove(id: string) {
